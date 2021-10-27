@@ -1,0 +1,28 @@
+{
+    "language": "English",
+    "info": "Payment by bank card and cash on any type of transport",
+    "info1": "Payment by card Volna by trolleybus and bus",
+    "info2": "Payment by card Volna on an underground tram",
+    "info3": "Change to any type of transport if the service is activated on the Volna card",
+    "info4": "In public taxis (mini buses), please, ask the driver about the fare",
+    "payment": "25 russian rubles",
+    "payment1": "20 russian rubles",
+    "payment2": "23 russian rubles",
+    "payment3": "during 30 min",
+    "payment4": "only by cash",
+    "name":"Choose a route",
+    "name1": "Current arrival's time and stops",
+    "name2": "Favourites",
+    "description1": "Created on Transnavigation technologies",
+    "name3": "Settings",
+    "name4": "Notifications",
+    "info5": "Baggage fee is ",
+    "payment5": "50",
+    "desc": "Click to enable dark theme",
+    "desc1": "To change the app's language, go to the system settings of the phone",
+    "desc2": "The version for visually impaired persons is also available according to the system settings of the phone",
+    "menu": "Message to dev",
+    "menu1": "Common info"
+
+
+}

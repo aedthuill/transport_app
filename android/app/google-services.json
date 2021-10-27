@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "424530164729",
+    "project_id": "notificationsvolganet",
+    "storage_bucket": "notificationsvolganet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424530164729:android:17735f8b31a0e232ed1b28",
+        "android_client_info": {
+          "package_name": "com.example.fl_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424530164729-uco0ngk6kq00bqjvmku0rf7hs0pu48bl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEKfa2K5GKDAJ1NIyru1CK-aJ4yj1_ZKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424530164729-uco0ngk6kq00bqjvmku0rf7hs0pu48bl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
