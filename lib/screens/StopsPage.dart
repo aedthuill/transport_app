@@ -11,6 +11,7 @@ import '../main.dart';
 import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
 import 'MapPage.dart';
+import 'NotifScreen.dart';
 import 'Settings.dart';
 
 class StopPage extends StatefulWidget {
@@ -52,7 +53,7 @@ class _StopPageState extends State<StopPage> {
                               fontSize: 14.0 * textScale),
                         ),
                         subtitle: Text((routes.stop[index].timeArrival ??
-                                'Время прибытия не сформировано')
+                            AppLocalizations.of(context).name11)
                             .toString()),
                       );
                     },
@@ -108,20 +109,15 @@ class _StopPageState extends State<StopPage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(),
-              child: Center(
-                  child: Text(
-                'Transport.Volganet',
-              )),
+              decoration: BoxDecoration(
+              ),
+              child: Center(child: Text('Transport.Volganet',)),
             ),
             ListTile(
-              leading: Icon(
-                Icons.message,
-                color: Colors.grey,
-              ),
-              title: Text(
-                  AppLocalizations.of(context).menu,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+              leading: Icon(Icons.message, color: Colors.grey,),
+              title:  Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
@@ -129,9 +125,9 @@ class _StopPageState extends State<StopPage> {
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title: Text(
-                  AppLocalizations.of(context).menu1,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+              title:  Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
                 Navigator.push(
@@ -143,10 +139,15 @@ class _StopPageState extends State<StopPage> {
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
               title: Text(
-                  AppLocalizations.of(context).name2,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
+              },
             ),
           ],
         ),

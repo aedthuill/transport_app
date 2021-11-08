@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'HomeSceen.dart';
 import 'MapPage.dart';
+import 'NotifScreen.dart';
 import 'Settings.dart';
 
 class InfoForUsers extends StatelessWidget {
@@ -21,10 +22,9 @@ class InfoForUsers extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Информация о поездке',
-          style: GoogleFonts.montserrat(
-              color: Colors.white, fontWeight: FontWeight.w400),
-        ),
+          AppLocalizations.of(context).name5,
+      style: GoogleFonts.montserrat(fontSize: 16.0 * textScale, fontWeight: FontWeight.bold),
+    ),
       ),
       body: Container(
           child: Column(children: [
@@ -188,6 +188,10 @@ class InfoForUsers extends StatelessWidget {
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],

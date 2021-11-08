@@ -133,6 +133,8 @@ class ApiService {
 
 
   //all times transport arrivals
+  //but it works really slow if we add it into algorithm, I don't know how to optimize
+
   Future <List<AllArrivalsTransport>> fetchAllArrivals(int mv_id)async{
     String username = 'VOLGA';
     String password = 'NET';

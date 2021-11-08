@@ -14,6 +14,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
+import 'NotifScreen.dart';
 import 'Settings.dart';
 
 /*
@@ -58,14 +59,28 @@ class _MapPageState extends State<MapPage> {
                     .map((e) => Marker(
                         point: latLong.LatLng(e.stLat, e.stLong),
                         builder: (_) => Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Expanded(child: Text(e.stDesc, overflow: TextOverflow.visible,)),
-                                  Expanded(child: Icon(Icons.person_pin)),
+                                  Expanded(
+                                      child: Text(
+                                    e.stDesc,
+                                    overflow: TextOverflow.visible,
+                                  )),
+                                  Expanded(child: InkWell(child: Icon(Icons.person_pin), onTap: (){
+                                    PopupOptions( popupSnap: PopupSnap.mapTop, popupBuilder: (BuildContext, Marker ) => Container(
+                                        width: 200,
+                                        height: 100,
+                                        color: Colors.white,
+                                        child: GestureDetector(
+                                          onTap: () => debugPrint('on marker tapped'),
+                                          child: Text(e.stTitle),
+                                    )
+                                    ));
+                                  },)),
                                 ],
                               ),
-                        )))
+                            )))
                     .toList(growable: true);
               });
             }
@@ -99,13 +114,13 @@ class _MapPageState extends State<MapPage> {
                     return FloatingActionButton(
                       child: Text(markers.length.toString()),
                       onPressed: null,
+                      heroTag: 'btn1',
                     );
                   },
                 ),
               ],
             );
-          }
-      ),
+          }),
       bottomNavigationBar: BottomAppBar(
         child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -115,12 +130,13 @@ class _MapPageState extends State<MapPage> {
                 icon: Icon(
                   Icons.settings,
                   color: Colors.grey,
-                ), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-              },
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
               ),
               IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
@@ -136,12 +152,13 @@ class _MapPageState extends State<MapPage> {
                     Navigator.pushNamed(context, 'favorite');
                   }),
               IconButton(
-                  icon: Icon(Icons.map, color: Colors.grey), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
-              }),
+                  icon: Icon(Icons.map, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapPage()),
+                    );
+                  }),
             ]),
       ),
       drawer: Drawer(
@@ -149,13 +166,18 @@ class _MapPageState extends State<MapPage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-              ),
-              child: Center(child: Text('Transport.Volganet', )),
+              decoration: BoxDecoration(),
+              child: Center(
+                  child: Text(
+                'Transport.Volganet',
+              )),
             ),
             ListTile(
-              leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text(
+              leading: Icon(
+                Icons.message,
+                color: Colors.grey,
+              ),
+              title: Text(
                 AppLocalizations.of(context).menu,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
@@ -165,7 +187,7 @@ class _MapPageState extends State<MapPage> {
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text(
+              title: Text(
                 AppLocalizations.of(context).menu1,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
@@ -178,11 +200,15 @@ class _MapPageState extends State<MapPage> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text(
+              title: Text(
                 AppLocalizations.of(context).name4,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],
@@ -190,6 +216,4 @@ class _MapPageState extends State<MapPage> {
       ),
     );
   }
- 
-  }
-
+}

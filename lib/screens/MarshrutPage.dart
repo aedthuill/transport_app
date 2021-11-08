@@ -16,6 +16,7 @@ import '../main.dart';
 import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
 import 'MapPage.dart';
+import 'NotifScreen.dart';
 import 'Settings.dart';
 import 'StopsPage.dart';
 
@@ -66,7 +67,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
         elevation: 0.0,
         title: Text(
           AppLocalizations.of(context).name,
-          style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 20 * textScale),
+          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 20 * textScale),
         ),
       ),
       body: (_routes == null)
@@ -130,15 +131,20 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text('Написать разработчику'),
+              title:  Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
               },
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text('Общая информация', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title:  Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -148,9 +154,15 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text('Уведомления', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],

@@ -22,7 +22,14 @@
     "desc1": "To change the app's language, go to the system settings of the phone",
     "desc2": "The version for visually impaired persons is also available according to the system settings of the phone",
     "menu": "Message to dev",
-    "menu1": "Common info"
+    "menu1": "Common info",
+    "name5": "Common info",
+    "desc3": "Push-notifications inform about changes in transport's performance or any other changes",
+    "name7": "Stops on the map and your current location",
+    "name8": "Stop's searching",
+    "name9": "Should rename?",
+    "name10": "Route's searching",
+    "name11": "Arrival time wasn't set up"
 
 
 }

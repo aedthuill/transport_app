@@ -14,13 +14,12 @@ import '../main.dart';
 import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
 import 'MapPage.dart';
+import 'NotifScreen.dart';
 import 'Settings.dart';
-
 
 //здесь лежит поиск по остановкам и добавление в избранное
 //да, в одном файле
 //также тут еще и переименовывание (мб допилю)
-
 
 //поиск по списку
 class StopSerachFavs extends StatefulWidget {
@@ -75,11 +74,13 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
                 icon: Icon(
                   Icons.settings,
                   color: Colors.grey,
-                ), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );},
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
               ),
               IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
@@ -95,12 +96,13 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
                     Navigator.pushNamed(context, 'favorite');
                   }),
               IconButton(
-                  icon: Icon(Icons.map, color: Colors.grey), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
-              }),
+                  icon: Icon(Icons.map, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapPage()),
+                    );
+                  }),
             ]),
       ),
       drawer: Drawer(
@@ -115,8 +117,8 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
               title:  Text(
-                  AppLocalizations.of(context).menu,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
@@ -125,8 +127,8 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
               title:  Text(
-                  AppLocalizations.of(context).menu1,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
                 Navigator.push(
@@ -137,17 +139,21 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text(
-                  AppLocalizations.of(context).name4,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],
         ),
       ),
-    );
+      );
   }
 
   _listItem(index) {
@@ -239,6 +245,7 @@ class _FavoriteStopsState extends State<FavoriteStops> {
 
   @override
   Widget build(BuildContext context) {
+    final textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
         appBar: AppBar(
           title: Text('Rename favourites'),
@@ -261,62 +268,109 @@ class _FavoriteStopsState extends State<FavoriteStops> {
                                 _stops[index].stTitle,
                                 style: GoogleFonts.montserrat(),
                               ),
-                              trailing: IconButton(icon: Icon(Icons.edit), onPressed: (){
-                                showDialog(
-                                    context: context,
-                                    builder: (_) => AlertDialog(
-                                      title: TextField(
-                                        controller: myTextController
-                                          ..text = _stops[index].stTitle,
-                                        autofocus: false,
-                                        decoration: InputDecoration(
-                                          disabledBorder:
-                                          OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius.all(
-                                                  Radius
-                                                      .circular(
-                                                      5.0)),
-                                              borderSide: BorderSide(
-                                                  color: Colors
-                                                      .transparent)),
-                                          focusedBorder:
-                                          OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius.all(
-                                                  Radius
-                                                      .circular(
-                                                      5.0)),
-                                              borderSide:
-                                              BorderSide()),
-                                          border: InputBorder.none,
-                                        ),
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () async {
-                                              await setState(() {
-                                                sharedPref.save(
-                                                    'route', _stops);
-                                              });
-                                              ScaffoldMessenger.of(
-                                                  context)
-                                                  .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text('Saved'),
-                                                    duration:
-                                                    const Duration(
-                                                        milliseconds:
-                                                        10),
-                                                  ));
-                                            },
-                                            child:
-                                            Text('Saved rename')),
-                                      ],
-                                    ));
-                              },),
+                              trailing: IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (_) => AlertDialog(
+                                            title: TextField(
+                                              controller: myTextController
+                                                ..text = _stops[index].stTitle,
+                                              autofocus: false,
+                                              decoration: InputDecoration(
+                                                disabledBorder:
+                                                    OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    5.0)),
+                                                        borderSide: BorderSide(
+                                                            color: Colors
+                                                                .transparent)),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    5.0)),
+                                                        borderSide:
+                                                            BorderSide()),
+                                                border: InputBorder.none,
+                                              ),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () async {
+                                                    await setState(() {
+                                                      sharedPref.save(
+                                                          'route', _stops);
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(SnackBar(
+                                                      content: Text('Saved'),
+                                                      duration: const Duration(
+                                                          milliseconds: 10),
+                                                    ));
+                                                  },
+                                                  child: Text('Saved rename')),
+                                            ],
+                                          ));
+                                },
+                              ),
                             );
                           });
-                }));
+                }
+                ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+              ),
+              child: Center(child: Text('Transport.Volganet',)),
+            ),
+            ListTile(
+              leading: Icon(Icons.message, color: Colors.grey,),
+              title:  Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
+              onTap: () async {
+                await launch("mailto: tvolganet@gmail.com");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info, color: Colors.grey),
+              title:  Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InfoForUsers()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications_active, color: Colors.grey),
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

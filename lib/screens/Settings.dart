@@ -112,8 +112,8 @@ class _SettingsPageState extends State<SettingsPage> {
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
               title:  Text(
-                  AppLocalizations.of(context).menu,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
@@ -122,8 +122,8 @@ class _SettingsPageState extends State<SettingsPage> {
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
               title:  Text(
-                  AppLocalizations.of(context).menu1,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
                 Navigator.push(
@@ -134,9 +134,9 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:   Text(
-                  AppLocalizations.of(context).name4,
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale)
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
               onTap: () {
                 Navigator.push(

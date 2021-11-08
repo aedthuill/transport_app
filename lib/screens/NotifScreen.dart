@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_app/main.dart';
+import 'package:fl_app/models/PushNotif.dart';
 import 'package:fl_app/service/LocalNotif.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -23,6 +24,7 @@ class NotifScreen extends StatefulWidget {
 }
 
 class _NotifScreenState extends State<NotifScreen> {
+  PushNotification _notificationInfo;
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _NotifScreenState extends State<NotifScreen> {
     ///gives you the message on which user taps
     ///and it opened the app from terminated state
     FirebaseMessaging.instance.getInitialMessage().then((message) {
-      if(message != null){
+      if (message != null) {
         final routeFromMessage = message.data["route"];
 
         Navigator.of(context).pushNamed(routeFromMessage);
@@ -40,20 +42,24 @@ class _NotifScreenState extends State<NotifScreen> {
 
     ///forground work
     FirebaseMessaging.onMessage.listen((message) {
-      if(message.notification != null){
+      if (message.notification != null) {
         print(message.notification.body);
         print(message.notification.title);
-        showDialog(context: context,  builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(message.notification.body),
-            content: Text(message.notification.title),
-            actions: [
-              TextButton(onPressed: (){
-                Navigator.of(context).pop();
-              }, child: Text('Ok'))
-            ],
-          );
-        });
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text(message.notification.body),
+                content: Text(message.notification.title),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Ok'))
+                ],
+              );
+            });
       }
 
       LocalNotificationService.display(message);
@@ -62,9 +68,15 @@ class _NotifScreenState extends State<NotifScreen> {
     ///When the app is in background but opened and user taps
     ///on the notification
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
-      final routeFromMessage = message.data["route"];
-
-      Navigator.of(context).pushNamed(routeFromMessage);
+      PushNotification notification = PushNotification(
+        title: message.notification.title,
+        body: message.notification.body,
+      );
+      setState(() {
+        _notificationInfo = notification;
+      });
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => NotifScreen()));
     });
 
     super.initState();
@@ -74,28 +86,33 @@ class _NotifScreenState extends State<NotifScreen> {
   Widget build(BuildContext context) {
     final textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Уведомления', style: GoogleFonts.montserrat()),
-        ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(width: 2),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Здесь будут ваши уведомления"),
-                  )
-                ],
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).name4,
+            style: GoogleFonts.montserrat(
+                fontSize: 18 * textScale, fontWeight: FontWeight.bold)),
+      ),
+      body:  Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Colors.green),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(AppLocalizations.of(context).desc3, style: GoogleFonts.montserrat(
+                              fontSize: 14 * textScale, fontWeight: FontWeight.bold)),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -105,11 +122,13 @@ class _NotifScreenState extends State<NotifScreen> {
                 icon: Icon(
                   Icons.settings,
                   color: Colors.grey,
-                ), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );},
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
               ),
               IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
@@ -125,12 +144,13 @@ class _NotifScreenState extends State<NotifScreen> {
                     Navigator.pushNamed(context, 'favorite');
                   }),
               IconButton(
-                  icon: Icon(Icons.map, color: Colors.grey), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
-              }),
+                  icon: Icon(Icons.map, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapPage()),
+                    );
+                  }),
             ]),
       ),
       drawer: Drawer(
@@ -138,21 +158,31 @@ class _NotifScreenState extends State<NotifScreen> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-              ),
-              child: Center(child: Text('Transport.Volganet',)),
+              decoration: BoxDecoration(),
+              child: Center(
+                  child: Text(
+                'Transport.Volganet',
+              )),
             ),
             ListTile(
-              leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text('Написать разработчику'),
+              leading: Icon(
+                Icons.message,
+                color: Colors.grey,
+              ),
+              title: Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
               },
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text('Общая информация', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title: Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -162,9 +192,15 @@ class _NotifScreenState extends State<NotifScreen> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text('Уведомления', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],

@@ -2,6 +2,7 @@
 
 import 'package:fl_app/models/RouteWithStops.dart';
 import 'package:fl_app/models/Routes.dart';
+import 'package:fl_app/screens/NotifScreen.dart';
 import 'package:fl_app/service/TransportService.dart';
 import 'package:fl_app/service/sharedPrefService.dart';
 import 'package:flutter/material.dart';
@@ -10,17 +11,20 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../main.dart';
 import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
 import 'MapPage.dart';
 import 'Settings.dart';
+import 'StopsPage.dart';
 
 class FavsSavePage extends StatefulWidget {
   final int ttId;
+  final List<RouteWithStops> routes;
 
-  const FavsSavePage({Key key, this.ttId}) : super(key: key);
+  const FavsSavePage({Key key, this.ttId, this.routes}) : super(key: key);
 
   @override
   _FavsSavePageState createState() => _FavsSavePageState();
@@ -83,6 +87,14 @@ class _FavsSavePageState extends State<FavsSavePage> {
                                 style: GoogleFonts.montserrat(
                                     fontSize: 14 * textScale),
                               ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => StopPage(
+                                        routeWithStops: _routes[index],
+                                      )));
+                            },
                           );
                         });
               },
@@ -101,7 +113,6 @@ class _FavsSavePageState extends State<FavsSavePage> {
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
-
               },
               ),
               IconButton(
@@ -137,16 +148,20 @@ class _FavsSavePageState extends State<FavsSavePage> {
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text('Написать разработчику',  style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title:  Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
               },
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text('Общая информация', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title:  Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -156,9 +171,15 @@ class _FavsSavePageState extends State<FavsSavePage> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text('Уведомления', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifScreen()),
+                );
               },
             ),
           ],

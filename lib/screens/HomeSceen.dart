@@ -142,16 +142,20 @@ class _HomescreenState extends State<Homescreen> {
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text('Написать разработчику', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title:  Text(
+                AppLocalizations.of(context).menu,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () async {
                 await launch("mailto: tvolganet@gmail.com");
               },
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text('Общая информация', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title:  Text(
+                AppLocalizations.of(context).menu1,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -161,8 +165,10 @@ class _HomescreenState extends State<Homescreen> {
             ),
             ListTile(
               leading: Icon(Icons.notifications_active, color: Colors.grey),
-              title:  Text('Уведомления', style:
-              GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15 * textScale),),
+              title: Text(
+                AppLocalizations.of(context).name4,
+                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
