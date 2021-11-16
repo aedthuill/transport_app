@@ -13,7 +13,6 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'FavoritesPage.dart';
 import 'MarshrutPage.dart';
 import 'Settings.dart';
 
@@ -30,17 +29,8 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     final textScale = MediaQuery.of(context).textScaleFactor;
-    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          Checkbox(
-            checkColor: Colors.white,
-              value: themeChange.darkTheme,
-              onChanged: (bool value) {
-                themeChange.darkTheme = value;
-              }),
-        ],
         title: Text(
           'Transport.Volganet',
           style: GoogleFonts.montserrat(

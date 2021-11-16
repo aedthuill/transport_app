@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -64,8 +63,8 @@ class _FavsSavePageState extends State<FavsSavePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Избранное",
-          style: GoogleFonts.montserrat(fontSize: 16 * textScale),
+          AppLocalizations.of(context).name2,
+          style: GoogleFonts.montserrat(fontSize: 16.0 * textScale),
         ),
       ),
       body: (_routes == null)

@@ -1,6 +1,6 @@
 // @dart=2.9
 
-//здесь мы меняем тему приложения со светлой на темную
+//здесь мы меняем тему приложения со светлой на темную используя шаред преференс и провайдер
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

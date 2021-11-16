@@ -14,7 +14,6 @@ import 'Settings.dart';
 class InfoForUsers extends StatelessWidget {
   InfoForUsers({Key key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     final textScale = MediaQuery.of(context).textScaleFactor;
@@ -23,22 +22,23 @@ class InfoForUsers extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).name5,
-      style: GoogleFonts.montserrat(fontSize: 16.0 * textScale, fontWeight: FontWeight.bold),
-    ),
+          style: GoogleFonts.montserrat(
+              fontSize: 16.0 * textScale, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Container(
           child: Column(children: [
-         ListTile(
-            title: Text(
-              AppLocalizations.of(context).info,
-              style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-            ),
-            trailing: Text(
-              AppLocalizations.of(context).payment,
-              style: GoogleFonts.montserrat(
-                  fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
-            ),
+        ListTile(
+          title: Text(
+            AppLocalizations.of(context).info,
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
           ),
+          trailing: Text(
+            AppLocalizations.of(context).payment,
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
+          ),
+        ),
         ListTile(
           title: Text(
             AppLocalizations.of(context).info1,
@@ -46,62 +46,66 @@ class InfoForUsers extends StatelessWidget {
           ),
           trailing: Text(
             AppLocalizations.of(context).payment1,
-            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale,  fontWeight: FontWeight.bold),
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
           ),
         ),
-            ListTile(
-                  title: Text(
-                    AppLocalizations.of(context).info2,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-                  ),
-                  trailing: Text(
-                    AppLocalizations.of(context).payment2,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale,  fontWeight: FontWeight.bold),
-                  ),
-                ),
-            ListTile(
-                  title: Text(
-                    AppLocalizations.of(context).info3,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-                  ),
-                  trailing: Text(
-                    AppLocalizations.of(context).payment3,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale,  fontWeight: FontWeight.bold),
-                  ),
-                ),
-            ListTile(
-                  title: Text(
-                    AppLocalizations.of(context).info4,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-                  ),
-                  trailing: Text(
-                    AppLocalizations.of(context).payment4,
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale,  fontWeight: FontWeight.bold),
-                  ),
-                ),
-            ListTile(
-              title: Text(
-                AppLocalizations.of(context).info5,
-                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-              ),
-              trailing: Text(
-                AppLocalizations.of(context).payment5,
-                style: GoogleFonts.montserrat(fontSize: 14.0 * textScale,  fontWeight: FontWeight.bold),
-              ),
-            ),
-             ListTile(
-                  title: Text(
-                    'Создано на технологиях Транснавигация',
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-                  ),
-                ),
-             ListTile(
-                  title: Text(
-                    'Создано на технологиях Open Street Map',
-                    style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
-                  ),
-                ),
-
+        ListTile(
+          title: Text(
+            AppLocalizations.of(context).info2,
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+          trailing: Text(
+            AppLocalizations.of(context).payment2,
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            AppLocalizations.of(context).info3,
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+          trailing: Text(
+            AppLocalizations.of(context).payment3,
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            AppLocalizations.of(context).info4,
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+          trailing: Text(
+            AppLocalizations.of(context).payment4,
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            AppLocalizations.of(context).info5,
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+          trailing: Text(
+            AppLocalizations.of(context).payment5,
+            style: GoogleFonts.montserrat(
+                fontSize: 14.0 * textScale, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            'Создано на технологиях Транснавигация',
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            'Создано на технологиях Open Street Map',
+            style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
+          ),
+        ),
       ])),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
@@ -119,13 +123,13 @@ class InfoForUsers extends StatelessWidget {
                 icon: Icon(
                   Icons.settings,
                   color: Colors.grey,
-                ), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-
-              },
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
               ),
               IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
@@ -141,12 +145,13 @@ class InfoForUsers extends StatelessWidget {
                     Navigator.pushNamed(context, 'favorite');
                   }),
               IconButton(
-                  icon: Icon(Icons.map, color: Colors.grey), onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
-              }),
+                  icon: Icon(Icons.map, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapPage()),
+                    );
+                  }),
             ]),
       ),
       drawer: Drawer(
@@ -154,13 +159,18 @@ class InfoForUsers extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-              ),
-              child: Center(child: Text('Transport.Volganet',)),
+              decoration: BoxDecoration(),
+              child: Center(
+                  child: Text(
+                'Transport.Volganet',
+              )),
             ),
             ListTile(
-              leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text(
+              leading: Icon(
+                Icons.message,
+                color: Colors.grey,
+              ),
+              title: Text(
                 AppLocalizations.of(context).menu,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
@@ -170,7 +180,7 @@ class InfoForUsers extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text(
+              title: Text(
                 AppLocalizations.of(context).menu1,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
@@ -200,5 +210,3 @@ class InfoForUsers extends StatelessWidget {
     );
   }
 }
-
-

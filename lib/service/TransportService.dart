@@ -1,11 +1,14 @@
 // @dart=2.9
 
-import 'package:fl_app/models/Arrival.dart';
+
+//ПОБОЙТЕСЬ БОГА И НЕ ТРОГАЙТЕ ТУТ НИЧЕГО
+//ОНО ЛУЧШЕ ВСЕ РАВНО НЕ СТАНЕТ
+//ЕСЛИ МОЖЕТЕ ЧТО-ТО ПОМЕНЯТЬ, ТО В СЛУЧАЕ ЕСЛИ БУДЕТЕ ПРЯМ ОЧЕНЬ УВЕРЕНЫ В ТОМ, ЧТО ДЕЛАЕТЕ В ОСТАЛЬНЫХ СЛУЧАЯХ НЕ НАДО НИЧЕГО ТРОГАТЬ
+
 import 'package:fl_app/models/CurrentArrival.dart';
 import 'package:fl_app/models/MarshrutVariant.dart';
 import 'package:fl_app/models/RaceCard.dart';
 import 'package:fl_app/models/RouteWithStops.dart';
-import 'package:fl_app/models/RouteandStopsSearch.dart';
 import 'package:fl_app/models/Routes.dart';
 import 'package:fl_app/models/Stops.dart';
 import 'package:fl_app/models/TransportType.dart';
@@ -25,6 +28,7 @@ import 'package:fl_app/service/ApiService.dart';
 //в предыдущей функции мы уже нашли пару маршрут/вариант маршрута, поэтому сейчас нам надо найти пару карточка рейса/остановка
 // в послендней функции мы по ключу находим пару остановка/карточка рейса, во внутрь остановки добавляем время прибытия на нее и - ВУАЛЯ
 // все работает.
+
 class TransportService {
   final ApiService api = ApiService();
 

@@ -1,7 +1,6 @@
 // @dart=2.9
 
 import 'package:fl_app/models/RouteWithStops.dart';
-import 'package:fl_app/screens/FavoritesPage.dart';
 import 'package:fl_app/service/TransportService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
