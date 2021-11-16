@@ -1,6 +1,7 @@
-# fl_app
+# transport_app
 
-A new Flutter project.
+Rewriting alo project with some features. Nothing special, I think, just the old logic in the new perfomance with some new features like adding items in favourite, options for language changing and some perks for visually impared person. Plus, it supports to switch theme from light to dark mode. 
+
 
 ## Getting Started
 
