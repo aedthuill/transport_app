@@ -4,8 +4,11 @@ import 'package:fl_app/models/RouteWithStops.dart';
 import 'package:fl_app/service/TransportService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../main.dart';
 import 'HomeSceen.dart';
@@ -24,15 +27,22 @@ class StopPage extends StatefulWidget {
 }
 
 class _StopPageState extends State<StopPage> {
+
+  Box<RouteWithStops> favoriteRoutesBox;
+  final df = new DateFormat('dd-MM-yyyy hh:mm a');
+
   @override
   Widget build(BuildContext context) {
+
     final textScale = MediaQuery.of(context).textScaleFactor;
     TransportService service = getIt<TransportService>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).name1,
-          style: GoogleFonts.montserrat(fontWeight: FontWeight.w400, fontSize: 14 * textScale),
+          style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w400, fontSize: 14 * textScale),
         ),
       ),
       body: FutureBuilder(
@@ -43,21 +53,22 @@ class _StopPageState extends State<StopPage> {
             return (routes == null)
                 ? Center(child: CircularProgressIndicator())
                 : ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: routes.stop.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                          routes.stop[index].stTitle,
-                          style: GoogleFonts.montserrat(
-                              fontSize: 14.0 * textScale),
-                        ),
-                        subtitle: Text((routes.stop[index].timeArrival ??
-                            AppLocalizations.of(context).name11)
-                            .toString()),
+                        itemCount: routes.stop.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(
+                              routes.stop[index].stTitle,
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 14.0 * textScale),
+                            ),
+                            subtitle: Text((df.format(
+                                    routes.stop[index].timeArrival ??
+                                        AppLocalizations.of(context).name11))
+                                .toString()),
+                          );
+                        },
                       );
-                    },
-                  );
+
           }),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
@@ -109,13 +120,18 @@ class _StopPageState extends State<StopPage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-              ),
-              child: Center(child: Text('Transport.Volganet',)),
+              decoration: BoxDecoration(),
+              child: Center(
+                  child: Text(
+                'Transport.Volganet',
+              )),
             ),
             ListTile(
-              leading: Icon(Icons.message, color: Colors.grey,),
-              title:  Text(
+              leading: Icon(
+                Icons.message,
+                color: Colors.grey,
+              ),
+              title: Text(
                 AppLocalizations.of(context).menu,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),
@@ -125,7 +141,7 @@ class _StopPageState extends State<StopPage> {
             ),
             ListTile(
               leading: Icon(Icons.info, color: Colors.grey),
-              title:  Text(
+              title: Text(
                 AppLocalizations.of(context).menu1,
                 style: GoogleFonts.montserrat(fontSize: 14.0 * textScale),
               ),

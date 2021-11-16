@@ -46,7 +46,10 @@ class _MapPageState extends State<MapPage> {
     final textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Остановки на карте'),
+        title: Text(
+          AppLocalizations.of(context).name4,
+          style: GoogleFonts.montserrat(fontSize: 16.0 * textScale, fontWeight: FontWeight.w400),
+        ),
       ),
       body: FutureBuilder<List<Stop>>(
           future: fetchStops(),

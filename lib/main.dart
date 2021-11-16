@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 
 import 'l10n/l10n.dart';
 import 'models/MarshrutVariant.dart';
+import 'models/Stops.dart';
 import 'models/StopsForMap.dart';
 
 /*Короче, Бедолага, даю тебе код и в благородство играть не буду:
@@ -37,6 +38,7 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 
 const favoritesBox = 'favorite';
 const favorBox = 'favsStop';
+const FavsStopsBox = 'favsStopsBox';
 final getIt = GetIt.asNewInstance();
 
 Future<void> main() async {
@@ -45,6 +47,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   Hive.registerAdapter(RouteWithStopsAdapter());
+  Hive.registerAdapter(StopListAdapter());
   Hive.registerAdapter(StopAdapter());
   Hive.registerAdapter(RoutesAdapter());
   Hive.registerAdapter(ScheduleVariantsAdapter());

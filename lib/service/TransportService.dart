@@ -72,7 +72,10 @@ class TransportService {
     if (routesbyTransportType.isEmpty) {
       await fetchTransportWithRoutes();
     }
-    List<Routes> routes = routesbyTransportType[ttId].routes;
+    print('I AM HERE WITH THE ERRORS FOR YA');
+    List<Routes> routes = routesbyTransportType[ttId].routes.toList();
+    print(routes);
+    print('I AM HERE AFTER THE SECOND PRINT');
     List<ScheduleVariants> variants = [];
 
     variants.addAll(await api.fetchSchedule());
@@ -85,10 +88,16 @@ class TransportService {
       routesWithStops.add(routeWithStops);
       routeWithStops.route = route;
 
+      print(routes);
+      print('I AM HERE AFTER THE SECOND PRINT');
+
       routeWithStops.variant =
           variants.where((variant) => variant.mrId == route.mrId).first;
+      print(routesWithStops);
+      print('the goddamit bug');
     }
     return routesWithStops;
+
   }
 
 

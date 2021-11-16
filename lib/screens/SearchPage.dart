@@ -51,7 +51,7 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
     final textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Поиск остановки'),
+        title: Text( AppLocalizations.of(context).name8),
       ),
       body: (_stops == null)
           ? CircularProgressIndicator()
@@ -298,6 +298,7 @@ class _FavoriteStopsState extends State<FavoriteStops> {
                                                             BorderSide()),
                                                 border: InputBorder.none,
                                               ),
+
                                             ),
                                             actions: [
                                               TextButton(

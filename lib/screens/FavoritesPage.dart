@@ -74,6 +74,12 @@ class _FavsSavePageState extends State<FavsSavePage> {
               valueListenable: favoriteRoutesBox.listenable(),
               builder: (context, Box<RouteWithStops> box, _) {
                 List<RouteWithStops> _routes = List.from(box.values.toList());
+                print(_routes);
+                print('HERE IS THE SECOND PART OF BUG');
+                if (box.values.length == 0)
+                  return Center(
+                    child: Text("Not added"),
+                  );
                 return (_routes == null)
                     ? Center(
                         child: CircularProgressIndicator(),

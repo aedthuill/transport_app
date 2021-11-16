@@ -17,6 +17,7 @@ import 'HomeSceen.dart';
 import 'InfoForUsers.dart';
 import 'MapPage.dart';
 import 'NotifScreen.dart';
+import 'SearchPage.dart';
 import 'Settings.dart';
 import 'StopsPage.dart';
 
@@ -180,10 +181,12 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
 
   void onFavoritePress(int index) {
     if (favoriteRoutesBox.containsKey(index)) {
-      favoriteRoutesBox.delete(_routes[index].route.ttId);
+      favoriteRoutesBox.deleteAt(_routes[index].route.ttId);
+      print('THE NEW IDS HERE');
       return;
     }
     favoriteRoutesBox.put(index, _routes[index]);
+    print(_routes);
   }
 
   _listItem(index) {
@@ -208,13 +211,12 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
                       routeWithStops: _routes[index],
                     )));
       },
-      //ебаный костыль
-      //если ты такой умный, то давай переделывай, но я уже сама не вывожу это говно
+      //сраный костыль для остановок. Жать надо дооооолго
       onLongPress: (){
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => FavsSavePage(
+                builder: (context) => StopSerachFavs(
                 )));
       },
     );
@@ -226,7 +228,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
       padding: const EdgeInsets.all(8),
       child: TextField(
         decoration: InputDecoration(
-          hintText: 'Поиск маршрута',
+          hintText:  AppLocalizations.of(context).name10,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
