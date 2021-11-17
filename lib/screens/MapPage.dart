@@ -48,7 +48,8 @@ class _MapPageState extends State<MapPage> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).name4,
-          style: GoogleFonts.montserrat(fontSize: 16.0 * textScale, fontWeight: FontWeight.w400),
+          style: GoogleFonts.montserrat(
+              fontSize: 16.0 * textScale, fontWeight: FontWeight.w400),
         ),
       ),
       body: FutureBuilder<List<Stop>>(
@@ -60,30 +61,24 @@ class _MapPageState extends State<MapPage> {
               listStops.forEach((element) {
                 allMarkers = listStops
                     .map((e) => Marker(
-                        point: latLong.LatLng(e.stLat, e.stLong),
-                        builder: (_) => Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Expanded(
-                                      child: Text(
-                                    e.stDesc,
-                                    overflow: TextOverflow.visible,
-                                  )),
-                                  Expanded(child: InkWell(child: Icon(Icons.person_pin), onTap: (){
-                                    PopupOptions( popupSnap: PopupSnap.mapTop, popupBuilder: (BuildContext, Marker ) => Container(
-                                        width: 200,
-                                        height: 100,
-                                        color: Colors.white,
-                                        child: GestureDetector(
-                                          onTap: () => debugPrint('on marker tapped'),
-                                          child: Text(e.stTitle),
-                                    )
-                                    ));
-                                  },)),
-                                ],
-                              ),
-                            )))
+                          point: latLong.LatLng(e.stLat, e.stLong),
+                          builder: (_) => IconButton(
+                            icon: Icon(Icons.person_pin),
+                            iconSize: 30,
+                            onPressed: () {
+                              return   showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    title: Text(e.stTitle),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () { Text(e.stTitle); },
+                                          child: Text('Ok')),
+                                    ],
+                                  ));
+                            },
+                          ),
+                        ))
                     .toList(growable: true);
               });
             }
@@ -95,8 +90,6 @@ class _MapPageState extends State<MapPage> {
                   MarkerClusterPlugin(),
                   LocationMarkerPlugin(),
                 ],
-
-                //HERE IS ON TAP OPTIONS
               ),
               layers: [
                 TileLayerOptions(
@@ -110,8 +103,8 @@ class _MapPageState extends State<MapPage> {
                   size: Size(40, 40),
                   markers: allMarkers,
                   polygonOptions: PolygonOptions(
-                      borderColor: Colors.blueAccent,
-                      color: Colors.black12,
+                      borderColor: Colors.green[300],
+                      color: Colors.green,
                       borderStrokeWidth: 3),
                   builder: (context, markers) {
                     return FloatingActionButton(

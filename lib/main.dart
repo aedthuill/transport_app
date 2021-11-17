@@ -6,6 +6,7 @@ import 'package:fl_app/models/RouteWithStops.dart';
 import 'package:fl_app/models/Routes.dart';
 import 'package:fl_app/screens/FavoritesPage.dart';
 import 'package:fl_app/screens/HomeSceen.dart';
+import 'package:fl_app/screens/MapPage.dart';
 import 'package:fl_app/screens/SearchPage.dart';
 
 import 'package:fl_app/service/ChangingTheme.dart';
@@ -87,7 +88,7 @@ class _MyAppState extends State<MyApp> {
       return MaterialApp(
         theme: Styles.themeData(themeChangeProvider.darkTheme, context),
         debugShowCheckedModeBanner: false,
-        home: Homescreen(),
+        home: MapPage(),
         routes: {
           'favorite': (_) => FavsSavePage(),
           'favsStop': (_) => FavoriteStops()
