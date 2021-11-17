@@ -77,7 +77,7 @@ class _FavsSavePageState extends State<FavsSavePage> {
                 print('HERE IS THE SECOND PART OF BUG');
                 if (box.values.length == 0)
                   return Center(
-                    child: Text("Not added"),
+                    child: Text( AppLocalizations.of(context).name12, style: GoogleFonts.montserrat(color: Colors.grey),),
                   );
                 return (_routes == null)
                     ? Center(

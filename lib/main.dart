@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
       return MaterialApp(
         theme: Styles.themeData(themeChangeProvider.darkTheme, context),
         debugShowCheckedModeBanner: false,
-        home: MapPage(),
+        home: Homescreen(),
         routes: {
           'favorite': (_) => FavsSavePage(),
           'favsStop': (_) => FavoriteStops()

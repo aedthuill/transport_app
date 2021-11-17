@@ -34,24 +34,16 @@ class DarkThemeProvider with ChangeNotifier {
 }
 
 class Styles {
-
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       primarySwatch: Colors.green,
       primaryColor: isDarkTheme ? Colors.black : Colors.green,
-
       backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),
-
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
       buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
-
-      hintColor: isDarkTheme ? Color(0xff280C0B) : Color(0xffEECED3),
-
       focusColor: isDarkTheme ? Color(0xff0B2512) : Color(0xffA8DAB5),
       bottomAppBarColor: isDarkTheme ? Colors.black : Colors.white,
-
       disabledColor: Colors.grey,
-      textSelectionColor: isDarkTheme ? Colors.white : Colors.black,
       cardColor: isDarkTheme ? Colors.grey[800] : Colors.green,
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
@@ -60,7 +52,8 @@ class Styles {
       appBarTheme: AppBarTheme(
         elevation: 0.0,
       ),
+      textSelectionTheme: TextSelectionThemeData(
+          selectionColor: isDarkTheme ? Colors.white : Colors.black),
     );
-
   }
 }

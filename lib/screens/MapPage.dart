@@ -47,7 +47,7 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).name4,
+          AppLocalizations.of(context).name7,
           style: GoogleFonts.montserrat(
               fontSize: 16.0 * textScale, fontWeight: FontWeight.w400),
         ),

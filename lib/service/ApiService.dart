@@ -168,5 +168,5 @@ Future<List<Stop>> fetchStops() async {
   var jsonResponse = convert.jsonDecode(response.body) as List;
   var body = response.body;
   print(body);
-  return jsonResponse.map((e) => Stop.fromJson(e)).skip(1).toList();
+  return jsonResponse.map((e) => Stop.fromJson(e)).toList();
 }

@@ -27,13 +27,11 @@ class StopPage extends StatefulWidget {
 }
 
 class _StopPageState extends State<StopPage> {
-
   Box<RouteWithStops> favoriteRoutesBox;
   final df = new DateFormat('dd-MM-yyyy hh:mm a');
 
   @override
   Widget build(BuildContext context) {
-
     final textScale = MediaQuery.of(context).textScaleFactor;
     TransportService service = getIt<TransportService>();
 
@@ -53,22 +51,21 @@ class _StopPageState extends State<StopPage> {
             return (routes == null)
                 ? Center(child: CircularProgressIndicator())
                 : ListView.builder(
-                        itemCount: routes.stop.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text(
-                              routes.stop[index].stTitle,
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 14.0 * textScale),
-                            ),
-                            subtitle: Text((df.format(
-                                    routes.stop[index].timeArrival ??
-                                        AppLocalizations.of(context).name11))
-                                .toString()),
-                          );
-                        },
+                    itemCount: routes.stop.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                          routes.stop[index].stTitle,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 14.0 * textScale),
+                        ),
+                        subtitle: Text((df.format(
+                                routes.stop[index].timeArrival ??
+                                    AppLocalizations.of(context).name11))
+                            .toString()),
                       );
-
+                    },
+                  );
           }),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
