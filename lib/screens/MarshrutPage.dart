@@ -171,6 +171,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
     );
   }
 
+  //меняет иконку
   Widget getIcon(int index) {
     if (favoriteRoutesBox.containsKey(index)) {
       return Icon(Icons.favorite, color: Colors.red);
@@ -178,6 +179,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
     return Icon(Icons.favorite_border);
   }
 
+  //добавляет в избранное
   void onFavoritePress(int index) {
     if (favoriteRoutesBox.containsKey(index)) {
       favoriteRoutesBox.deleteAt(_routes[index].route.ttId);
@@ -188,6 +190,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
     print(_routes);
   }
 
+  //фетчится список маршрутов из АПИ и алгоритма
   _listItem(index) {
     final textScale = MediaQuery.of(context).textScaleFactor;
     return ListTile(
@@ -221,6 +224,7 @@ class _MarshrutsPageState extends State<MarshrutsPage> {
     );
   }
 
+  //поиск по названию маршрута. Не чувствителен к регистру, не чувствителен к последовательности набираемых букв
   _searchBar() {
     print('test1');
     return Padding(

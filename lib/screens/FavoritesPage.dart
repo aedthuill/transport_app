@@ -33,11 +33,7 @@ class _FavsSavePageState extends State<FavsSavePage> {
   Box<RouteWithStops> favoriteRoutesBox;
   TransportService service = getIt<TransportService>();
   List<RouteWithStops> _routes = [];
-  TextEditingController _editingController;
-  UserSimplePreferences sharedPref = UserSimplePreferences();
-  RouteWithStops routeSave = RouteWithStops();
 
-  Routes routesRenamedSave = Routes();
 
   @override
   void initState() {
@@ -47,15 +43,10 @@ class _FavsSavePageState extends State<FavsSavePage> {
       });
     });
     favoriteRoutesBox = Hive.box(favoritesBox);
-    _editingController = TextEditingController();
+
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _editingController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

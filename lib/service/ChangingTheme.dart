@@ -39,7 +39,6 @@ class Styles {
       primarySwatch: Colors.green,
       primaryColor: isDarkTheme ? Colors.black : Colors.green,
       backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),
-      indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
       buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
       focusColor: isDarkTheme ? Color(0xff0B2512) : Color(0xffA8DAB5),
       bottomAppBarColor: isDarkTheme ? Colors.black : Colors.white,

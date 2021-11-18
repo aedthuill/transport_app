@@ -30,17 +30,9 @@ class _NotifScreenState extends State<NotifScreen> {
   void initState() {
     LocalNotificationService.initialize(context);
 
-    ///gives you the message on which user taps
-    ///and it opened the app from terminated state
-    FirebaseMessaging.instance.getInitialMessage().then((message) {
-      if (message != null) {
-        final routeFromMessage = message.data["route"];
-
-        Navigator.of(context).pushNamed(routeFromMessage);
-      }
-    });
-
     ///forground work
+    //алерт диалог открорется только если перейти на вкладку с уведомлениями
+    //можно сделать копипасту на каждый кусок кода
     FirebaseMessaging.onMessage.listen((message) {
       if (message.notification != null) {
         print(message.notification.body);
@@ -65,19 +57,6 @@ class _NotifScreenState extends State<NotifScreen> {
       LocalNotificationService.display(message);
     });
 
-    ///When the app is in background but opened and user taps
-    ///on the notification
-    FirebaseMessaging.onMessageOpenedApp.listen((message) {
-      PushNotification notification = PushNotification(
-        title: message.notification.title,
-        body: message.notification.body,
-      );
-      setState(() {
-        _notificationInfo = notification;
-      });
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => NotifScreen()));
-    });
 
     super.initState();
   }

@@ -17,7 +17,7 @@ import 'package:fl_app/models/TransportType.dart';
 
 class ApiService {
 
-
+///виды транспортного средства
   Future<List<Transport>> fetchTransport() async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -32,6 +32,7 @@ class ApiService {
     return jsonResponse.map((e) => Transport.fromJson(e)).toList();
   }
 
+  ///сами маршруты
   Future<List<Routes>> fetchroutes() async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -68,7 +69,7 @@ class ApiService {
    }
   }
 
-/*tbracecard*/
+/*Карточка рейса*/
   Future<List<RaceCard>> fetchRaceCard(int mv_id) async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -85,6 +86,9 @@ class ApiService {
     return jsonResponse.map((e) => RaceCard.fromJson(e)).toList();
   }
 
+  /// вот это используется для того, чтобы настроить направление
+  /// на самом деле я его не настраивала и просто предупреждаю что такое есть
+  /// его можно добавить в алгоритм
   Future<List<RaceList>> fetchRaceList(int mv_id) async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -101,7 +105,7 @@ class ApiService {
     return jsonResponse.map((e) => RaceList.fromJson(e)).toList();
   }
 
-  /* tbmarshvariants*/
+  /* вариант маршрута*/
   Future<List<ScheduleVariants>> fetchSchedule() async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -116,7 +120,7 @@ class ApiService {
     return jsonResponse.map((e) => ScheduleVariants.fromJson(e)).toList();
   }
 
-  /*tbstops*/
+  /*остановки*/
   Future<List<StopList>> fetchStops() async {
     String username = 'VOLGA';
     String password = 'NET';
@@ -132,8 +136,10 @@ class ApiService {
   }
 
 
-  //all times transport arrivals
-  //but it works really slow if we add it into algorithm, I don't know how to optimize
+  //все расписание
+  //если поместить в алгоритм, то работать будет медленно.
+  // Ожидание составляет 30-40 секунд, потому что он выгражет вообще все расписание
+  //как оптимизировать - не придумала.
 
   Future <List<AllArrivalsTransport>> fetchAllArrivals(int mv_id)async{
     String username = 'VOLGA';
@@ -154,6 +160,9 @@ class ApiService {
 
 //это запрос для вывода на карту значков остановок. Идет отдельно от всего
 //Также создан отдельный класс модели. Почему-то внутри класса не работает, хз, что ему надо
+///переодически не может правильно распарсить:
+///первый элемент он видит как нулевой и поэтому начинает думать, что все остальное тоже нулл
+///в АПИ первый элемент реально нулл.
 
 Future<List<Stop>> fetchStops() async {
   String username = 'VOLGA';

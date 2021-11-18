@@ -32,7 +32,7 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Transport.Volganet',
+          'Дорис-Ассистент.Волгоград',
           style: GoogleFonts.montserrat(
               color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20 * textScale),
         ),

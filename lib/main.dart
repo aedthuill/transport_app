@@ -24,14 +24,9 @@ import 'models/MarshrutVariant.dart';
 import 'models/Stops.dart';
 import 'models/StopsForMap.dart';
 
-/*Короче, Бедолага, даю тебе код и в благородство играть не буду:
-* уберешь для меня пару костылей и мы в расчете.
-* Заодно посмотрим как быстро твоя башка варит в работе с легаси.
-* А по твоей теме попытаюсь разузнать.
-* Хрен его знает, на кой ляд тебе эта работа в БР сдалась,
-* но я в чужие дела не лезу, хочешь работать здесь, значит, есть за что*/
 
-///Receive message when app is in background solution for on message
+///Принимает уведомления, когда париложение на бэкграунде
+///по гайдлайнам должна быть объявлена как глобальная переменная
 Future<void> backgroundHandler(RemoteMessage message) async {
   print(message.data.toString());
   print(message.notification.title);
