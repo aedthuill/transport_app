@@ -7,6 +7,7 @@ import 'package:fl_app/models/Routes.dart';
 import 'package:fl_app/screens/FavoritesPage.dart';
 import 'package:fl_app/screens/HomeSceen.dart';
 import 'package:fl_app/screens/MapPage.dart';
+import 'package:fl_app/screens/NotifScreen.dart';
 import 'package:fl_app/screens/SearchPage.dart';
 
 import 'package:fl_app/service/ChangingTheme.dart';
@@ -86,7 +87,8 @@ class _MyAppState extends State<MyApp> {
         home: Homescreen(),
         routes: {
           'favorite': (_) => FavsSavePage(),
-          'favsStop': (_) => FavoriteStops()
+          'favsStop': (_) => FavoriteStops(),
+          "notif": (_) => NotifScreen(),
         },
         supportedLocales: L10n.all,
         localizationsDelegates: [

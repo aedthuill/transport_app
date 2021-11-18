@@ -1,10 +1,8 @@
 // @dart=2.9
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:fl_app/main.dart';
 import 'package:fl_app/models/PushNotif.dart';
 import 'package:fl_app/service/LocalNotif.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -57,6 +55,19 @@ class _NotifScreenState extends State<NotifScreen> {
       LocalNotificationService.display(message);
     });
 
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      final routeFromMessage = message.data["notif"];
+
+      Navigator.of(context).pushNamed(routeFromMessage);
+    });
+
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if(message != null){
+        final routeFromMessage = message.data["notif"];
+
+        Navigator.of(context).pushNamed(routeFromMessage);
+      }
+    });
 
     super.initState();
   }
