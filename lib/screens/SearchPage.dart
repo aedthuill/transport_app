@@ -110,10 +110,10 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: BoxDecoration(
               ),
-              child: Center(child: Text('Transport.Volganet',)),
+              child: Center(child: Text( 'Дорис-Ассистент.Волгоград', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),)),
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),
@@ -332,7 +332,7 @@ class _FavoriteStopsState extends State<FavoriteStops> {
             const DrawerHeader(
               decoration: BoxDecoration(
               ),
-              child: Center(child: Text('Transport.Volganet',)),
+              child: Center(child: Text( 'Дорис-Ассистент.Волгоград',)),
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),

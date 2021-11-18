@@ -137,10 +137,14 @@ class _FavsSavePageState extends State<FavsSavePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: BoxDecoration(
               ),
-              child: Center(child: Text('Transport.Volganet',)),
+              child: Center(child: Text(
+                  'Дорис-Ассистент.Волгоград', style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.bold, fontSize: 16 * textScale
+              )
+              )),
             ),
             ListTile(
               leading: Icon(Icons.message, color: Colors.grey,),

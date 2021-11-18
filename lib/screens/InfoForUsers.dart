@@ -158,11 +158,11 @@ class InfoForUsers extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: BoxDecoration(),
               child: Center(
                   child: Text(
-                'Transport.Volganet',
+                    'Дорис-Ассистент.Волгоград', style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
               )),
             ),
             ListTile(
