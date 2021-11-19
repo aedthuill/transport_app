@@ -5,11 +5,11 @@ import 'package:fl_app/models/TransportWithRoutes.dart';
 import 'package:fl_app/screens/InfoForUsers.dart';
 import 'package:fl_app/screens/MapPage.dart';
 import 'package:fl_app/screens/NotifScreen.dart';
-import 'package:fl_app/service/ChangingTheme.dart';
+
 import 'package:fl_app/service/TransportService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

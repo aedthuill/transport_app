@@ -1,3 +1,6 @@
+
+// @dart=2.9
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +15,7 @@ class LocalNotificationService {
     InitializationSettings(
         android: AndroidInitializationSettings("@mipmap/ic_launcher"));
 
-    _notificationsPlugin.initialize(initializationSettings,onSelectNotification: (String? route) async{
+    _notificationsPlugin.initialize(initializationSettings,onSelectNotification: (String route) async{
       if(route != null){
         Navigator.of(context).pushNamed(route);
       }
@@ -37,8 +40,8 @@ class LocalNotificationService {
 
       await _notificationsPlugin.show(
         id,
-        message.notification!.title,
-        message.notification!.body,
+        message.notification.title,
+        message.notification.body,
         notificationDetails,
         payload: message.data["route"],
       );

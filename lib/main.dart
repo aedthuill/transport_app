@@ -6,7 +6,6 @@ import 'package:fl_app/models/RouteWithStops.dart';
 import 'package:fl_app/models/Routes.dart';
 import 'package:fl_app/screens/FavoritesPage.dart';
 import 'package:fl_app/screens/HomeSceen.dart';
-import 'package:fl_app/screens/MapPage.dart';
 import 'package:fl_app/screens/NotifScreen.dart';
 import 'package:fl_app/screens/SearchPage.dart';
 

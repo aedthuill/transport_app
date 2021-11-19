@@ -52,6 +52,16 @@ class _StopSerachFavsState extends State<StopSerachFavs> {
     final textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.favorite,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, 'favsStop');
+            },
+          ),
+        ],
         title: Text( AppLocalizations.of(context).name8),
       ),
       body: (_stops == null)
@@ -243,7 +253,10 @@ class _FavoriteStopsState extends State<FavoriteStops> {
     });
     super.initState();
   }
-
+  void submit(){
+    Navigator.of(context).pop(myTextController.text);
+  }
+  
   @override
   Widget build(BuildContext context) {
     final textScale = MediaQuery.of(context).textScaleFactor;
@@ -303,11 +316,8 @@ class _FavoriteStopsState extends State<FavoriteStops> {
                                             ),
                                             actions: [
                                               TextButton(
-                                                  onPressed: () async {
-                                                    await setState(() {
-                                                      sharedPref.save(
-                                                          'route', _stops);
-                                                    });
+                                                  onPressed: ()  {
+                                                     submit();
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(SnackBar(

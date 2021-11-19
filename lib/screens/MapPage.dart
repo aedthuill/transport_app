@@ -31,7 +31,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final PopupController _popupController = PopupController();
+
 
   @override
   void initState() {

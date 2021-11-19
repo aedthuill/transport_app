@@ -1,6 +1,6 @@
 // @dart=2.9
 
-import 'package:fl_app/models/Arrival.dart';
+
 import 'package:fl_app/models/CurrentArrival.dart';
 import 'package:fl_app/models/Stops.dart';
 import 'package:hive/hive.dart';

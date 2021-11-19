@@ -1,10 +1,9 @@
 // @dart=2.9
 
 import 'package:fl_app/models/RouteWithStops.dart';
-import 'package:fl_app/models/Routes.dart';
+
 import 'package:fl_app/screens/NotifScreen.dart';
 import 'package:fl_app/service/TransportService.dart';
-import 'package:fl_app/service/sharedPrefService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
