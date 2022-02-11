@@ -3,6 +3,12 @@
 Rewritten old project. Nothing special, I think, just the old logic in the new perfomance with some new features like adding items in favourite, options for language changing and some perks for visually impared person. Plus, it supports to switch theme from light to dark mode. 
 
 
+
+## UPDATE 
+
+## IT IS NOT CONFIGURED FOR IOS. ONLY FOR ANDROID
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
