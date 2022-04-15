@@ -1,6 +1,6 @@
-# transport_app
+# something
 
-Rewritten old project for transport app of my home city. Nothing special, I think, just the old logic in the new perfomance with some new features like adding items in favourite, options for language changing and some perks for visually impared person. Plus, it supports to switch theme from light to dark mode. 
+some craft
 
 
 
