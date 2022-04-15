@@ -1,14 +1,5 @@
 # something
 
-some craft
-
-
-
-## UPDATE 
-
-## IT IS NOT CONFIGURED FOR IOS. ONLY FOR ANDROID
-
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
