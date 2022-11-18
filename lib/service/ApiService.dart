@@ -19,14 +19,14 @@ class ApiService {
 
 ///виды транспортного средства
   Future<List<Transport>> fetchTransport() async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getTransportTypes.php?fmt=json"),
+            "http:/php?fmt=json"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
     return jsonResponse.map((e) => Transport.fromJson(e)).toList();
@@ -34,14 +34,14 @@ class ApiService {
 
   ///сами маршруты
   Future<List<Routes>> fetchroutes() async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getMarshes.php?fmt=json"),
+            "http:/getMarshes.php?fmt=json"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
     return jsonResponse.map((e) => Routes.fromJson(e)).toList();
@@ -52,14 +52,14 @@ class ApiService {
 //на трамвай подземный не получает время и на некоторые троллейбусы, но это уже проблема не приложения
 
   Future<List<CurrentArrivalTime>> fetchArrivals(mvId) async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getTableCur.php?fmt=json"),
+            "http://getTableCur.php?fmt=json"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
    try{
@@ -71,14 +71,14 @@ class ApiService {
 
 /*Карточка рейса*/
   Future<List<RaceCard>> fetchRaceCard(int mv_id) async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getRaceCard.php?fmt=json&mv_id=$mv_id"),
+            "http://getRaceCard.php?fmt=json&mv_id=$mv_id"),
         headers: <String, String>{'authorization': basicAuth});
     var body = response.body;
     print(body);
@@ -90,14 +90,14 @@ class ApiService {
   /// на самом деле я его не настраивала и просто предупреждаю что такое есть
   /// его можно добавить в алгоритм
   Future<List<RaceList>> fetchRaceList(int mv_id) async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getRaceList.php?fmt=json&mv_id=$mv_id"),
+            "http://getRaceList.php?fmt=json&mv_id=$mv_id"),
         headers: <String, String>{'authorization': basicAuth});
     var body = response.body;
     print(body);
@@ -107,14 +107,14 @@ class ApiService {
 
   /* вариант маршрута*/
   Future<List<ScheduleVariants>> fetchSchedule() async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getMarshVariants.php?fmt=json"),
+            "http:/getMarshVariants.php?fmt=json"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
     return jsonResponse.map((e) => ScheduleVariants.fromJson(e)).toList();
@@ -122,14 +122,14 @@ class ApiService {
 
   /*остановки*/
   Future<List<StopList>> fetchStops() async {
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getStops.php?fmt=json"),
+            "http:/getStops.php?fmt=json"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
     return jsonResponse.map((e) => StopList.fromJson(e)).toList();
@@ -142,14 +142,14 @@ class ApiService {
   //как оптимизировать - не придумала.
 
   Future <List<AllArrivalsTransport>> fetchAllArrivals(int mv_id)async{
-    String username = 'VOLGA';
-    String password = 'NET';
+    String username = '';
+    String password = '';
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$username:$password'));
     print(basicAuth);
     var response = await http.get(
         Uri.parse(
-            "http://asunav-ws.volganet.ru/volgograd/getTableAll.php?fmt=json&mv_id=$mv_id"),
+            "http:/getTableAll.php?fmt=json&mv_id=$mv_id"),
         headers: <String, String>{'authorization': basicAuth});
     var jsonResponse = convert.jsonDecode(response.body) as List;
       return jsonResponse.map((e) => AllArrivalsTransport.fromJson(e)).toList();
@@ -165,14 +165,14 @@ class ApiService {
 ///в АПИ первый элемент реально нулл.
 
 Future<List<Stop>> fetchStops() async {
-  String username = 'VOLGA';
-  String password = 'NET';
+  String username = '';
+  String password = '';
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$username:$password'));
   print(basicAuth);
   var response = await http.get(
       Uri.parse(
-          "http://asunav-ws.volganet.ru/volgograd/getStops.php?fmt=json"),
+          "http:/getStops.php?fmt=json"),
       headers: <String, String>{'authorization': basicAuth});
   var jsonResponse = convert.jsonDecode(response.body) as List;
   var body = response.body;
